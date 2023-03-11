@@ -1,0 +1,174 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  max-width: 1920px;
+}
+
+.container {
+  background-color: aqua;
+  width: 1320px;
+  padding: 100px;
+  box-sizing: border-box;
+  border: solid 1px;
+}
+.container h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+.container form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: solid 1px;
+  width: 900px;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 40px;
+}
+.container form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.container form .form-group .form-name {
+  width: 200px;
+}
+.container form .form-group .form-comment {
+  width: 500px;
+  height: 100px;
+}
+.container form .button-wraper {
+  position: relative;
+}
+.container form .button-wraper .btn {
+  letter-spacing: 2px;
+  font-size: 22px;
+  line-height: 68px;
+  background: #Fc5185;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  min-width: 200px;
+  padding: 0 24px;
+  box-shadow: 0 10px 60px -10px #CD106E;
+  cursor: pointer;
+  transform: perspective(250px) scale3d(1, 1, 1);
+  transition: all 1s cubic-bezier(0.3, 0.98, 0.52, 0.99);
+  outline: none;
+}
+.container form .button-wraper .btn:hover {
+  box-shadow: 0 8px 65pc -5px #CD106E;
+}
+.container .all {
+  background-color: #FFFFFF;
+  padding: 20px;
+}
+.container .all ul li {
+  background-color: #Fc5185;
+  margin-bottom: 20px;
+}
+.container .all ul .delete {
+  cursor: pointer;
+  display: flex;
+  justify-content: end;
+}
+.container .all ul .delete span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: solid 1px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.container .all ul .data {
+  font-size: 16px;
+}
+.container .all ul .name {
+  font-size: 22px;
+}
+.container .all ul .commit {
+  font-size: 18px;
+}
+.container .all ul .commit:last-child {
+  margin: 0;
+}
+
+li {
+  background-color: #Fc5185;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=style.css.map */
