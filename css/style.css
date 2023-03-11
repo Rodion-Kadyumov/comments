@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -73,79 +74,97 @@ body {
   display: flex;
   justify-content: center;
   max-width: 1920px;
+  background-image: url(/images/spektr.jpg);
+}
+
+.container .block form .button-wraper .btn, .container .block form .form-group .form-comment, .container .block form .form-group .form-name {
+  background-image: linear-gradient(to right, #364a61, #4279b5, #54a3d8, #7663b9);
 }
 
 .container {
-  background-color: aqua;
-  width: 1320px;
+  width: 1700px;
   padding: 100px;
-  box-sizing: border-box;
-  border: solid 1px;
 }
-.container h2 {
+.container .block {
+  background-image: url(/images/wall.png);
+  padding: 40px;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+.container .block h2 {
   display: flex;
   justify-content: center;
   font-size: 32px;
   margin-bottom: 40px;
+  color: #FFFFFF;
 }
-.container form {
+.container .block form {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: solid 1px;
-  width: 900px;
+  border: solid 1px #FFFFFF;
+  width: 1420px;
   padding: 20px;
   border-radius: 30px;
   margin-bottom: 40px;
 }
-.container form .form-group {
+.container .block form .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 }
-.container form .form-group .form-name {
-  width: 200px;
-}
-.container form .form-group .form-comment {
-  width: 500px;
-  height: 100px;
-}
-.container form .button-wraper {
-  position: relative;
-}
-.container form .button-wraper .btn {
-  letter-spacing: 2px;
-  font-size: 22px;
-  line-height: 68px;
-  background: #Fc5185;
+.container .block form .form-group label {
+  font-size: 24px;
+  padding-bottom: 20px;
   color: #FFFFFF;
-  border: none;
-  border-radius: 10px;
-  min-width: 200px;
-  padding: 0 24px;
-  box-shadow: 0 10px 60px -10px #CD106E;
-  cursor: pointer;
-  transform: perspective(250px) scale3d(1, 1, 1);
-  transition: all 1s cubic-bezier(0.3, 0.98, 0.52, 0.99);
-  outline: none;
 }
-.container form .button-wraper .btn:hover {
-  box-shadow: 0 8px 65pc -5px #CD106E;
-}
-.container .all {
-  background-color: #FFFFFF;
+.container .block form .form-group .form-name {
+  width: 200px;
+  height: 40px;
   padding: 20px;
 }
-.container .all ul li {
-  background-color: #Fc5185;
-  margin-bottom: 20px;
+.container .block form .form-group .form-comment {
+  width: 500px;
+  height: 100px;
+  padding: 20px;
 }
-.container .all ul .delete {
+.container .block form .button-wraper .btn {
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px 0 rgba(72, 83, 97, 0.75);
+  border-radius: 30px;
+  width: 200px;
+  height: 40px;
+}
+.container .all div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.container .all div .wrap {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-image: url(/images/i.png);
+  min-height: 300px;
+  padding: 40px;
+}
+.container .all div .wrap .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .all div .wrap .head .data {
+  font-size: 16px;
+  color: #FFFFFF;
+}
+.container .all div .wrap .head .delete {
   cursor: pointer;
   display: flex;
   justify-content: end;
 }
-.container .all ul .delete span {
+.container .all div .wrap .head .delete span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,20 +174,37 @@ body {
   width: 40px;
   height: 40px;
 }
-.container .all ul .data {
-  font-size: 16px;
+.container .all div .wrap .body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
-.container .all ul .name {
+.container .all div .wrap .body .name {
   font-size: 22px;
+  color: #FFFFFF;
 }
-.container .all ul .commit {
+.container .all div .wrap .body .name img {
+  box-sizing: border-box;
+  height: 50px;
+  border: 50%;
+  margin-right: 20px;
+}
+.container .all div .wrap .body .commit {
   font-size: 18px;
+  max-width: 600px;
+  color: #FFFFFF;
 }
-.container .all ul .commit:last-child {
-  margin: 0;
+.container .all div .wrap .footer {
+  display: flex;
+  justify-content: end;
 }
-
-li {
-  background-color: #Fc5185;
-  margin-bottom: 20px;
+.container .all div .wrap .footer img {
+  cursor: pointer;
+  width: 20px;
+}
+.container .all div .wrap .footer img:hover {
+  color: red;
+  background-color: red;
+  box-sizing: border-box;
+  border-radius: 50%;
 }/*# sourceMappingURL=style.css.map */
