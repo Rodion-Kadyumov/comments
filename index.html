@@ -1,35 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comments</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="/css/style.css">
+  <title>Comments</title>
 </head>
-<body>
 
-  <div class="container">
-    <div class="block">
-      <h2>
-        Оставьте свой комментарий, он очень важен для нас!
-      </h2>
-      <form>
-        <div class="form-group">
-          <label for="comment-name">Имя:</label>
-          <input type="text" class="form-name" id="comment-name"  placeholder="Ваше имя">
-        </div>
-        <div class="form-group">
-          <label for="comment-body">Комментарий:</label>
-          <textarea type="password" class="form-comment" id="comment-body" placeholder="Оставьте ваш комментарий"></textarea>
-        </div>
-        <div class="button-wraper">
-          <button type="submit" id="comment-add" class="btn btn-primary">Отправить</button>
-        </div>
-      </form>
+  <body>
+    <marquee behavior="" direction="right">
+      <h1>Блок комментариев</h1>
+    </marquee>
+    <form>
+      <div class="form-group">
+        <label for="comment-name">Имя:</label>
+        <input type="text" class="form-name" id="comment-name"  placeholder="Имя не может быть пустым">
+      </div>
+      <div class="form-group">
+        <label for="comment-body">Комментарий:</label>
+        <textarea type="password" class="form-comment" id="comment-body" maxlength="200" placeholder="Максимум 200 символов"></textarea>
+      </div>
+      <div class="button-wraper">
+        <button type="submit" id="comment-add" class="btn-add">Отправить</button>
+      </div>
+    </form>
+    <div class="container">
+      <ul></ul>
     </div>
-    <div class="all" id="comment-field"></div>
-  </div>
-  <script src="/script.js"></script>
-</body>
+    <script src="/script.js"></script>
+  </body>
 </html>

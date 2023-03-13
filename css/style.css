@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -72,63 +71,68 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
   max-width: 1920px;
-  background-image: url(/images/spektr.jpg);
+  background-image: url(/images/bg.jpg);
+  background-size: 100% 100%;
 }
 
-.container .block form .button-wraper .btn, .container .block form .form-group .form-comment, .container .block form .form-group .form-name {
-  background-image: linear-gradient(to right, #364a61, #4279b5, #54a3d8, #7663b9);
-}
-
-.container {
-  width: 1700px;
-  padding: 100px;
-}
-.container .block {
-  background-image: url(/images/wall.png);
-  padding: 40px;
-  border-radius: 30px;
-  margin-bottom: 50px;
-}
-.container .block h2 {
-  display: flex;
-  justify-content: center;
+h1 {
   font-size: 32px;
-  margin-bottom: 40px;
-  color: #FFFFFF;
+  padding: 50px 0;
 }
-.container .block form {
+
+form {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border: solid 1px #FFFFFF;
-  width: 1420px;
-  padding: 20px;
+  padding: 40px;
   border-radius: 30px;
   margin-bottom: 40px;
 }
-.container .block form .form-group {
+form .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
 }
-.container .block form .form-group label {
+form .form-group input::-moz-placeholder {
+  color: red;
+  font-size: 1.2em;
+  font-style: italic;
+}
+form .form-group input::placeholder {
+  color: red;
+  font-size: 1.2em;
+  font-style: italic;
+}
+form .form-group textarea::-moz-placeholder {
+  color: red;
+  font-size: 1.2em;
+  font-style: italic;
+}
+form .form-group textarea::placeholder {
+  color: red;
+  font-size: 1.2em;
+  font-style: italic;
+}
+form .form-group label {
   font-size: 24px;
   padding-bottom: 20px;
   color: #FFFFFF;
 }
-.container .block form .form-group .form-name {
-  width: 200px;
+form .form-group .form-name {
+  width: 300px;
   height: 40px;
   padding: 20px;
 }
-.container .block form .form-group .form-comment {
+form .form-group .form-comment {
   width: 500px;
   height: 100px;
   padding: 20px;
 }
-.container .block form .button-wraper .btn {
+form .button-wraper .btn-add {
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   box-shadow: 0 4px 15px 0 rgba(72, 83, 97, 0.75);
@@ -136,75 +140,107 @@ body {
   width: 200px;
   height: 40px;
 }
-.container .all div {
+
+.container ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-.container .all div .wrap {
+.container ul .heart-button {
+  cursor: pointer;
+  outline: none;
+}
+.container ul .heart-button .heart-flip {
+  --duration: .6s;
+  --active: #ea4673;
+  --inactive: #d1d6ee;
+  width: var(--base);
+  height: calc(var(--base) + var(--base) / 2);
+  border-radius: calc(var(--base) / 2) calc(var(--base) / 2) 0 0;
+  position: relative;
+  transform: rotate(var(--rotate, -45deg));
+  transition: background var(--duration), transform var(--duration) ease;
+  background: var(--heart-background, var(--inactive));
+}
+.container ul .heart-button .heart-flip:before, .container ul .heart-button .heart-flip:after {
+  content: "";
+  width: calc(var(--base) / 2);
+  height: var(--base);
+  border-radius: var(--pseudo-border-radius, calc(var(--base) / 2) 0 0 calc(var(--base) / 2));
+  position: absolute;
+  left: var(--pseudo-left, -50%);
+  transform-origin: var(--pseudo-origin, 100%) 50%;
+  bottom: 0;
+  background: var(--heart-background, var(--inactive));
+  filter: brightness(var(--pseudo-filter, 50%));
+  transform: translateX(1%) rotateY(var(--pseudo-rotate, 90deg)) translateZ(0);
+  transition: background var(--duration), transform var(--duration) ease, filter var(--duration);
+}
+.container ul .heart-button .heart-flip:after {
+  --pseudo-border-radius: 0 calc(var(--base) / 2) calc(var(--base) / 2) 0;
+  --pseudo-left: 100%;
+  --pseudo-origin: 0;
+  filter: brightness(var(--pseudo-filter-second, 100%));
+  transform: translateX(-1%) rotateY(var(--pseudo-rotate-second, 0deg)) translateZ(0);
+}
+.container ul .heart-button.active .heart-flip {
+  --rotate: 45deg;
+  --pseudo-filter: 100%;
+  --pseudo-filter-second: 50%;
+  --pseudo-rotate: 0deg;
+  --pseudo-rotate-second: 90deg;
+  --heart-background: var(--active);
+}
+.container ul .heart-button {
+  --background: #fff;
+  --background-active: #ea4673;
+  padding: 10px;
+  background: var(--button-background, var(--background));
+}
+.container ul .heart-button .heart-flip {
+  --base: 8px;
+  --active: #fff;
+  --inactive: #bbc1e1;
+  display: inline-block;
+}
+.container ul .heart-button.active {
+  --button-background: var(--background-active);
+}
+.container li {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  border-radius: 30px;
-  background-image: url(/images/i.png);
   min-height: 300px;
-  padding: 40px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
 }
-.container .all div .wrap .head {
+.container li .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px 40px;
 }
-.container .all div .wrap .head .data {
-  font-size: 16px;
-  color: #FFFFFF;
-}
-.container .all div .wrap .head .delete {
-  cursor: pointer;
-  display: flex;
-  justify-content: end;
-}
-.container .all div .wrap .head .delete span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border: solid 1px;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-.container .all div .wrap .body {
+.container li .content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-}
-.container .all div .wrap .body .name {
-  font-size: 22px;
-  color: #FFFFFF;
-}
-.container .all div .wrap .body .name img {
-  box-sizing: border-box;
-  height: 50px;
-  border: 50%;
-  margin-right: 20px;
-}
-.container .all div .wrap .body .commit {
   font-size: 18px;
-  max-width: 600px;
-  color: #FFFFFF;
+  font-weight: 400;
+  padding: 20px 40px;
 }
-.container .all div .wrap .footer {
-  display: flex;
-  justify-content: end;
-}
-.container .all div .wrap .footer img {
+.container li span {
   cursor: pointer;
-  width: 20px;
-}
-.container .all div .wrap .footer img:hover {
-  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
   background-color: red;
-  box-sizing: border-box;
-  border-radius: 50%;
+}
+.container li:hover {
+  margin-top: -5px;
+  box-shadow: 0 0 20px red;
 }/*# sourceMappingURL=style.css.map */

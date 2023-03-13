@@ -1,91 +1,62 @@
-let comments = [];
-loadComments();
+const userName = document.querySelector('#comment-name');
+const userCommit = document.querySelector('#comment-body');
+const addBtn = document.querySelector('#comment-add');
+const list = document.querySelector('.container ul');
+const data = Math.floor(Date.now() / 1000);
 
-document.getElementById('comment-add').onclick = function(){
-  let commentName = document.getElementById('comment-name');
-  let commentBody = document.getElementById('comment-body');
+addBtn.addEventListener('click', (e) => {
+  if(userName.value != '' & userCommit.value != '') {
+    e.preventDefault();
+    const li = document.createElement('li');
+    const head = document.createElement('p');
+    head.classList.add('head');
+    head.innerHTML = userName.value + timeConverter(data);
+    const body = document.createElement('p');
+    body.classList.add('content');
+    body.innerHTML = userCommit.value;
+    li.appendChild(head);
+    li.appendChild(body);
+    list.appendChild(li);
 
-  let comment = {
-      name : commentName.value,
-      body : commentBody.value,
-      time : Math.floor(Date.now() / 1000)
+    const likeBtn = document.createElement('button');
+    likeBtn.classList.add('heart-button');
+    const likeFlip = document.createElement('div');
+    likeFlip.classList.add('heart-flip');
+    likeBtn.appendChild(likeFlip);
+    li.appendChild(likeBtn);
+
+    const deleteBtn = document.createElement('span');
+    deleteBtn.innerHTML = 'Удалить комментарий';
+    li.appendChild(deleteBtn);
   }
 
-  commentName.value = '';
-  commentBody.value = '';
+  const like = document.querySelectorAll('.heart-button').forEach(button => button.addEventListener('click', (e) => {
+    button.classList.toggle('active')
+  }));
 
-  comments.push(comment);
-  saveComments();
-  showComments();
-}
-
-function saveComments(){
-  localStorage.setItem('comments', JSON.stringify(comments));
-}
-
-function loadComments(){
-  if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
-  showComments();
-}
-
-let btn = document.querySelector('#delete');
-
-
-function showComments (){
-  let commentField = document.getElementById('comment-field');
-  let out = '<div>';
-  comments.forEach(function(item) {
-    out += `<div class="wrap">
-    <div class="head">
-    <p class="data"><em>${timeConverter(item.time)}</em></p>`;
-    out += `<p class="delete" id="delete"><span>X</span></p>
-    </div>`;
-    out += `<div class="body">
-      <p class="name" role="alert"><b><img src="/images/avatar.png" alt="Аатар">${item.name}</b></p>`;
-    out += `<p class="commit" role="alert">${item.body}</p>
-    </div>`;
-    out += `<div class="footer">
-        <img src="/images/filled-like.png" alt="">
-      </div>
-    </div>`;
-  });
-  out += '</div>'
-  commentField.innerHTML = out;
-}
-
-btn.addEventListener('click', () => {
-  localStorage.removeItem('comments')
+  const close = document.querySelectorAll('span');
+  for(let i = 0; i < close.length; i++) {
+    close[i].addEventListener('click', ()=> {
+      close[i].parentElement.style.opacity = 0;
+      setTimeout(() => {
+        close[i].parentElement.style.display = 'none';
+        close[i].parentElement.remove();
+      }, 500);
+    })
+  }
+  userName.value = '';
+  userCommit.value = '';
 })
 
 function timeConverter(UNIX_timestamp){
-    let a = new Date(UNIX_timestamp * 1000);
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    let hour = a.getHours();
-    let min = a.getMinutes();
-    let sec = a.getSeconds();
-    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return time;
-  }
-
-  
-// const likeBtn = document.querySelectorAll(".like__btn");
-// let likeIcon = document.querySelectorAll("#icon"),
-// count = document.querySelectorAll("#count");
-
-// let clicked = false;
-
-
-// likeBtn.addEventListener("click", () => {
-//   if (!clicked) {
-//     clicked = true;
-//     likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
-//     count.textContent++;
-//   } else {
-//     clicked = false;
-//     likeIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`;
-//     count.textContent--;
-//   }
-// });
+  const a = new Date(UNIX_timestamp * 1000);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const year = a.getFullYear();
+  const month = months[a.getMonth()];
+  const date = a.getDate();
+  const hour = a.getHours();
+  const min = a.getMinutes();
+  const sec = a.getSeconds();
+  const time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}

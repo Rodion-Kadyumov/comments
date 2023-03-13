@@ -1,134 +1,160 @@
-.container {
-  width: 1700px;
-  padding: 100px;
-  .block {
-    background-image: url(/images/wall.png);
-    padding: 40px;
-    border-radius: 30px;
-    margin-bottom: 50px;
-    h2 {
-    display: flex;
-    justify-content: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: $col;
-  }
-  form {
+form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: solid 1px $col;
+  padding: 40px;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  .form-group {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    border: solid 1px $col;
-    width: 1420px;
-    padding: 20px;
-    border-radius: 30px;
     margin-bottom: 40px;
-    .form-group {
+    input::placeholder {
+      color: red;
+      font-size: 1.2em;
+      font-style: italic;
+      }
+      textarea::placeholder {
+        color: red;
+        font-size: 1.2em;
+        font-style: italic;
+      }
+    label {
+      font-size: 24px;
+      padding-bottom: 20px;
+      color: $col;
+    }
+    .form-name {
+      width: 300px;
+      height: 40px;
+      padding: 20px;
+      // @extend %rgb;
+    }
+    .form-comment {
+      width: 500px;
+      height: 100px;
+      padding: 20px;
+      // @extend %rgb;
+    }
+  }
+  .button-wraper {
+    .btn-add {
+      cursor: pointer;
+      transition: all .4s ease-in-out;
+      // @extend %rgb;
+      box-shadow: 0 4px 15px 0 rgba(72, 83, 97, 0.75);
+      border-radius: 30px;
+      width: 200px;
+      height: 40px;
+    }
+  }
+}
+
+.container {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    .heart-button {
+      cursor: pointer;
+      outline: none;
+      .heart-flip {
+        --duration: .6s;
+        --active: #ea4673;
+        --inactive: #d1d6ee;
+        width: var(--base);
+        height: calc(var(--base) + var(--base) / 2);
+        border-radius: calc(var(--base) / 2) calc(var(--base) / 2) 0 0;
+        position: relative;
+        transform: rotate(var(--rotate, -45deg));
+        transition: background var(--duration), transform var(--duration) ease;
+        background: var(--heart-background, var(--inactive));
+        &:before,
+        &:after {
+          content: '';
+          width: calc(var(--base) / 2);
+          height: var(--base);
+          border-radius: var(--pseudo-border-radius, calc(var(--base) / 2) 0 0 calc(var(--base) / 2));
+          position: absolute;
+          left: var(--pseudo-left, -50%);
+          transform-origin: var(--pseudo-origin, 100%) 50%;
+          bottom: 0;
+          background: var(--heart-background, var(--inactive));
+          filter: brightness(var(--pseudo-filter, 50%));
+          transform: translateX(1%) rotateY(var(--pseudo-rotate, 90deg)) translateZ(0);
+          transition: background var(--duration), transform var(--duration) ease, filter var(--duration);
+        }
+        &:after {
+          --pseudo-border-radius: 0 calc(var(--base) / 2) calc(var(--base) / 2) 0;
+          --pseudo-left: 100%;
+          --pseudo-origin: 0;
+          filter: brightness(var(--pseudo-filter-second, 100%));
+          transform: translateX(-1%) rotateY(var(--pseudo-rotate-second, 0deg)) translateZ(0);
+        }
+      }
+      &.active {
+        .heart-flip {
+          --rotate: 45deg;
+          --pseudo-filter: 100%;
+          --pseudo-filter-second: 50%;
+          --pseudo-rotate: 0deg;
+          --pseudo-rotate-second: 90deg;
+          --heart-background: var(--active);
+        }
+      }
+    }
+    .heart-button {
+      --background: #fff;
+      --background-active: #ea4673;
+      padding: 10px;
+      background: var(--button-background, var(--background));
+      .heart-flip {
+        --base: 8px;
+        --active: #fff;
+        --inactive: #bbc1e1;
+        display: inline-block;
+      }
+      &.active {
+        --button-background: var(--background-active);
+      }
+    }
+  }
+    li {
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      margin-bottom: 40px;
-      label {
+      min-height: 300px;
+      border-radius: 30px;
+      background: rgba(255, 255 ,255, .4);
+      backdrop-filter: blur(1px);
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 24px;
-        padding-bottom: 20px;
-        color: $col;
+        font-weight: 700;
+        padding: 20px 40px;
       }
-      .form-name {
-        width: 200px;
-        height: 40px;
-        padding: 20px;
-        @extend %rgb;
-      }
-      .form-comment {
-        width: 500px;
-        height: 100px;
-        padding: 20px;
-        @extend %rgb;
-      }
-    }
-    .button-wraper {
-      .btn {
-        cursor: pointer;
-        transition: all .4s ease-in-out;
-        @extend %rgb;
-        box-shadow: 0 4px 15px 0 rgba(72, 83, 97, 0.75);
-        border-radius: 30px;
-        width: 200px;
-        height: 40px;
-      }
-    }
-  }
-}
-  .all {
-    div {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      .wrap {
+      .content {
         display: flex;
         flex-direction: column;
-        box-sizing: border-box;
-        border-radius: 30px;
-        background-image: url(/images/i.png);
-        min-height: 300px;
-        padding: 40px;
-        .head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .data {
-            font-size: 16px;
-            color: $col;
-          }
-          .delete {
-            cursor: pointer;
-            display: flex;
-            justify-content: end;
-            span {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              box-sizing: border-box;
-              border: solid 1px;
-              border-radius: 50%;
-              width: 40px;
-              height: 40px;
-            }
-          }
-        }
-        .body {
-          display: flex;
-          flex-direction: column;
-          flex: 1 1 auto;
-          .name {
-            font-size: 22px;
-            color: $col;
-            img {
-              box-sizing: border-box;
-              height: 50px;
-              border: 50%;
-              margin-right: 20px;
-            }
-          }
-          .commit {
-            font-size: 18px;
-            max-width: 600px;
-            color: $col;
-          }
-        }
-        .footer {
-          display: flex;
-          justify-content: end;
-          img {
-            cursor: pointer;
-            width: 20px;
-          }
-          img:hover {
-            color: red;
-            background-color: red;
-            box-sizing: border-box;
-            border-radius: 50%;
-          }
-        }
+        flex: 1 1 auto;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 20px 40px;
+      }
+      span {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        background-color: red;
       }
     }
+    li:hover {
+      margin-top: -5px;
+      box-shadow: 0 0 20px red;
+    }
   }
-}
