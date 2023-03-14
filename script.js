@@ -3,6 +3,7 @@ const userCommit = document.querySelector('#comment-body');
 const addBtn = document.querySelector('#comment-add');
 const list = document.querySelector('.container ul');
 const data = Math.floor(Date.now() / 1000);
+const enter = 'Enter';
 
 addBtn.addEventListener('click', (e) => {
   if(userName.value != '' & userCommit.value != '') {
@@ -47,6 +48,13 @@ addBtn.addEventListener('click', (e) => {
   userName.value = '';
   userCommit.value = '';
 })
+
+userCommit.addEventListener("keypress", (e) => {
+  if (e.code === enter) {
+    e.preventDefault();
+    addBtn.click();
+  }
+});
 
 function timeConverter(UNIX_timestamp){
   const a = new Date(UNIX_timestamp * 1000);
