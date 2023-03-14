@@ -10,7 +10,7 @@ addBtn.addEventListener('click', (e) => {
     const li = document.createElement('li');
     const head = document.createElement('p');
     head.classList.add('head');
-    head.innerHTML = userName.value + timeConverter(data);
+    head.innerHTML = userName.value + ' ' + timeConverter(data);
     const body = document.createElement('p');
     body.classList.add('content');
     body.innerHTML = userCommit.value;
@@ -30,7 +30,7 @@ addBtn.addEventListener('click', (e) => {
     li.appendChild(deleteBtn);
   }
 
-  const like = document.querySelectorAll('.heart-button').forEach(button => button.addEventListener('click', (e) => {
+  document.querySelectorAll('.heart-button').forEach(button => button.addEventListener('click', (e) => {
     button.classList.toggle('active')
   }));
 
@@ -57,6 +57,11 @@ function timeConverter(UNIX_timestamp){
   const hour = a.getHours();
   const min = a.getMinutes();
   const sec = a.getSeconds();
-  const time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-  return time;
+  if (date === date) {
+    return 'Сегодня' + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+  } else if (date == date - 1) {
+    return 'Вчера' + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+  } else {
+    return date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+  }
 }
