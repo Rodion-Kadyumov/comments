@@ -61,10 +61,7 @@ const userCommitLimit = userCommit.getAttribute('maxlength');
 const txtCounter = document.querySelector('.textarea__count span');
 txtCounter.innerHTML = userCommitLimit;
 
-userCommit.addEventListener("keyup", txtSetCounter);
-userCommit.addEventListener("keydown", function (event) {
-	if (event.repeat) txtSetCounter();
-});
+userCommit.addEventListener("input", txtSetCounter);
 
 function txtSetCounter() {
 	const txtCounterResult = userCommitLimit - userCommit.value.length;
